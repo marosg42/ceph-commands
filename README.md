@@ -23,6 +23,14 @@ Hints and tips for Ceph
 
 ## OSDs
 
+- `ceph daemon osd.0 config show` - show active config
+
+- `ceph daemon osd.0 config diff` - show difference between defaults and active config
+
+- `ceph tell osd.0 injectargs --debug-osd 20 --debug-ms 1` - runtime changes to an daemon
+
+- `ceph tell osd.* injectargs '--rbd_cache_max_dirty_age = 1'` - runtime change in all OSDs
+
 ## Pools
 
 `ceph osd pool ls`
@@ -57,6 +65,7 @@ Hints and tips for Ceph
 
 ## rados
 
-`rados df`
+`rados df` - show pool utilization stats, sizes etc, execute on monitor
+`rados lspools` - show pool utilization stats, sizes etc, execute on monitor
 
 ## rgw
