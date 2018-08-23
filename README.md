@@ -45,6 +45,8 @@ Hints and tips for Ceph
 
 `ceph osd pool create rbd1 <pgnum> <pgpnum> replicated` - create replicated pool
 
+`ceph osd pool set {pool-name} pg_num {pg_num}` - set pgnum for existing pool, shoul dbe immediatelly followed by `ceph osd pool set {pool-name} pgp_num {pgp_num}`
+
 ## Crushmap
 
 `ceph osd crush reweight <name> <number>` - reweight OSD
@@ -65,9 +67,21 @@ Hints and tips for Ceph
 
 `ceph pg ls stale/active/etc` - display PGs by state
 
+`ceph pg dump_stuck inactive|unclean|stale`
+  
+- Inactive PGs cannot process reads or writes because they are waiting for an OSD with the most up-to-date data to come up and in.
+
+- Unclean PGs contain objects that are not replicated the desired number of times. They should be recovering.
+
+- Stale PGs are in an unknown state - the OSDs that host them have not reported to the monitor cluster in a while (configured by mon_osd_report_timeout).
+
 `ceph pg {poolnum}.{pg-id} query` - very detailed info about single PG
 
-`ceph pg map <pg>`
+`ceph pg map <pg>` - Ceph will return the placement group map, the placement group, and the OSD status
+
+`ceph pg scrub {pg-id}` - scrub individual PG
+
+`ceph pg {pg-id} mark_unfound_lost revert|delete` - mark the unfound objects as lost
 
 ## rados
 
