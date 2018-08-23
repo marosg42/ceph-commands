@@ -23,6 +23,11 @@ Hints and tips for Ceph
 
 ## OSDs
 
+## Crushmap
+
+`ceph osd crush reweight <name> <number>` - reweight OSD
+
+
 ## PGs
 
 `ceph pg dump` - dump info about **all** PGs onto screen, huge output
