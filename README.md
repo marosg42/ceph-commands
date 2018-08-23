@@ -23,10 +23,21 @@ Hints and tips for Ceph
 
 ## OSDs
 
+## Pools
+
+`ceph osd pool ls`
+
+`ceph osd pool ls detail` - much better than previous one
+
+`rados -p <poolname> ls` - pool info from rados point of view
+
+`rbd -p glance ls` - list objects in a given pool
+
+`rbd -p glance ls --long` - # list objects in a given pool, more details
+
 ## Crushmap
 
 `ceph osd crush reweight <name> <number>` - reweight OSD
-
 
 ## PGs
 
@@ -40,8 +51,12 @@ Hints and tips for Ceph
 
 `ceph pg ls stale/active/etc` - display PGs by state
 
+`ceph pg {poolnum}.{pg-id} query` - very detailed info about single PG
+
 `ceph pg map <pg>`
 
 ## rados
+
+`rados df`
 
 ## rgw
