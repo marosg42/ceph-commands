@@ -69,3 +69,7 @@ Hints and tips for Ceph
 `rados lspools` - show pool utilization stats, sizes etc, execute on monitor
 
 ## rgw
+
+`radosgw-admin bucket stats` - list all buckets in radosgw
+
+`radosgw-admin --id radosgw.gateway -k /etc/ceph/keyring.rados.gateway bucket stats 2>&1` - list of buckets and their properties
