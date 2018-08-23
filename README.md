@@ -47,6 +47,10 @@ Hints and tips for Ceph
 
 `ceph osd crush reweight <name> <number>` - reweight OSD
 
+`ceph osd crush tree`
+
+`ceph osd crush remove nodeX`
+
 ## PGs
 
 `ceph pg dump` - dump info about **all** PGs onto screen, huge output
