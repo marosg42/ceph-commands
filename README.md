@@ -43,6 +43,8 @@ Hints and tips for Ceph
 
 `rbd -p glance ls --long` - # list objects in a given pool, more details
 
+`ceph osd pool create rbd1 <pgnum> <pgpnum> replicated` - create replicated pool
+
 ## Crushmap
 
 `ceph osd crush reweight <name> <number>` - reweight OSD
