@@ -90,6 +90,16 @@ Hints and tips for Ceph
 `rados df` - show pool utilization stats, sizes etc, execute on monitor
 `rados lspools` - show pool utilization stats, sizes etc, execute on monitor
 
+# block devices
+
+`rbd du <-p poolname>` - block devices are thin provisioned, this shows actual usage
+
+`rbd create image2 --size 16G --pool <poolname>` - create block device in a given pool
+
+`rbd ls <--pool x>` - list images in a pool
+
+`rbd --image <imagename> -p <poolname> info` - display detailed info about a volume
+
 ## rgw
 
 `radosgw-admin bucket stats` - list all buckets in radosgw
