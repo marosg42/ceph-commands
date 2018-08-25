@@ -19,6 +19,8 @@ Hints and tips for Ceph
 
 `ceph -w` - continuous display of what is happening inside cluster
 
+`ceph auth ls` - list authorized clients
+
 ## monitors
 
 ## OSDs
