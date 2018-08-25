@@ -58,7 +58,7 @@ Hints and tips for Ceph
 - noup: OSD is not allowed to start
 - nodown: failure reports for this OSD will be ignored
 - noin: if this OSD was previously marked out automatically after a failure, it will not be marked in when it starts
-- noout: if this OSD is down it will not automatically be marked out after the configured interval	
+- noout: if this OSD is down it will not automatically be marked out after the configured interval
   
 `ceph osd rm-<flag> <osd-id>` - unset per-OSD flags
 
