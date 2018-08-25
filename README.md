@@ -19,19 +19,48 @@ Hints and tips for Ceph
 
 `ceph -w` - continuous display of what is happening inside cluster
 
+`ceph df / ceph df detail` - very nice overview, pools, sizes, objects etc
+
 `ceph auth ls` - list authorized clients
 
 ## monitors
 
 ## OSDs
 
-- `ceph daemon osd.0 config show` - show active config
+`ceph osd stat`
 
-- `ceph daemon osd.0 config diff` - show difference between defaults and active config
+`ceph osd tree`
 
-- `ceph tell osd.0 injectargs --debug-osd 20 --debug-ms 1` - runtime changes to an daemon
+`ceph osd lspools`
 
-- `ceph tell osd.* injectargs '--rbd_cache_max_dirty_age = 1'` - runtime change in all OSDs
+`ceph osd df` - usage of all OSDs
+
+`ceph osd df|sort -n -k 7|uniq` - show usage on OSDs and sort them by %full
+
+`ceph daemon osd.0 config show` - show active config
+
+`ceph daemon osd.0 config diff` - show difference between defaults and active config
+
+`ceph tell osd.0 injectargs --debug-osd 20 --debug-ms 1` - runtime changes to an daemon
+
+`ceph tell osd.* injectargs '--rbd_cache_max_dirty_age = 1'` - runtime change in all OSDs
+
+`systemctl start ceph-osd@{osd-num}` - start OSD in systemd system
+
+`start ceph-osd id={osd-num}` - start OSD in trusty
+
+`ceph osd repair <osd>`
+
+`ceph-disk list` - run on OSD, show all info about OSD disks
+
+`ceph osd add-<flag> <osd-id>` - set per-OSD flags
+
+- noup: OSD is not allowed to start
+- nodown: failure reports for this OSD will be ignored
+- noin: if this OSD was previously marked out automatically after a failure, it will not be marked in when it starts
+- noout: if this OSD is down it will not automatically be marked out after the configured interval	
+  
+`ceph osd rm-<flag> <osd-id>` - unset per-OSD flags
 
 ## Pools
 
