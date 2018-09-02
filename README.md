@@ -78,6 +78,16 @@ Hints and tips for Ceph
 
 `ceph osd pool set {pool-name} pg_num {pg_num}` - set pgnum for existing pool, shoul dbe immediatelly followed by `ceph osd pool set {pool-name} pgp_num {pgp_num}`
 
+`ceph osd pool delete int.rgw.buckets.data int.rgw.buckets.data --yes-i-really-really-mean-it` - remove pool
+
+`ceph osd pool get {pool-name} {key}` - get pool values
+
+`ceph osd pool set {pool-name} {key} {value}` - set pool value
+
+`ceph osd pool stats` - show what is going on per pool
+
+
+
 ## Crushmap
 
 `ceph osd crush reweight <name> <number>` - reweight OSD
