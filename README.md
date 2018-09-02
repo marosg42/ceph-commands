@@ -86,7 +86,7 @@ Hints and tips for Ceph
 
 `ceph osd pool stats` - show what is going on per pool
 
-
+`ceph pg ls-by-pool <pool_name>` - list of PGs in a given pool
 
 ## Crushmap
 
@@ -106,6 +106,8 @@ Hints and tips for Ceph
 
 `ceph pg dump pools` - more targetted, less clutter
 
+`ceph pg ls-by-pool <pool_name>` - list of PGs in a given pool
+
 `ceph pg ls stale/active/etc` - display PGs by state
 
 `ceph pg dump_stuck inactive|unclean|stale`
@@ -120,9 +122,17 @@ Hints and tips for Ceph
 
 `ceph pg map <pg>` - Ceph will return the placement group map, the placement group, and the OSD status
 
+- returns osdmap eNNN pg {pg-num} -> up [0,1,2] acting [0,1,2]  (NNN is epoch)	If the Up Set and Acting Set do not match, this may be an indicator that the cluster rebalancing itself or of a potential problem with the cluster		
+
 `ceph pg scrub {pg-id}` - scrub individual PG
 
 `ceph pg {pg-id} mark_unfound_lost revert|delete` - mark the unfound objects as lost
+
+`ceph pg stat` - The result should tell the placement group map version (vNNNNNN), the total number of placement groups (x), and how many placement groups are in a particular state such as active+clean (y)
+
+`ceph tell <pgid> query` - state of specific problematic PG
+
+`ceph pg ls-by-pool <pool_name>` - list of PGs in a given pool
 
 ## rados
 
