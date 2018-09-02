@@ -182,3 +182,12 @@ Hints and tips for Ceph
 `radosgw-admin bucket stats` - list all buckets in radosgw
 
 `radosgw-admin --id radosgw.gateway -k /etc/ceph/keyring.rados.gateway bucket stats 2>&1` - list of buckets and their properties
+
+## Documentation
+
+[Ceph command reference](http://docs.ceph.com/docs/master/rados/operations/control/#)
+
+[List of all health warnings](http://docs.ceph.com/docs/master/rados/operations/health-checks/)
+
+[Placement groups description](http://docs.ceph.com/docs/master/rados/operations/placement-groups/)
+[Resolve a Volume is Busy Error on Cinder With Ceph Block Storage](https://mcwhirter.com.au/craige/blog/2015/Cinder_Cannot_Delete_Volume_-_volume_is_busy_With_Ceph_Block_Storage/)
