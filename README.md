@@ -116,6 +116,13 @@ Hints and tips for Ceph
 
 `ceph pg ls-by-pool <pool_name>` - list of PGs in a given pool
 
+`ceph osd pool application enable <poolname> <app> {--yes-i-really-mean-it}` - To enable a client application to conduct I/O operations on a pool
+
+- Where app is:
+  - cephfs for the Ceph Filesystem.
+  - rbd for the Ceph Block Device
+  - rgw for the Ceph Object Gateway
+
 ## Crushmap
 
 `ceph osd crush reweight <name> <number>` - reweight OSD
