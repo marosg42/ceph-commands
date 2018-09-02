@@ -23,7 +23,29 @@ Hints and tips for Ceph
 
 `ceph auth ls` - list authorized clients
 
-## monitors
+## dynamic configuration
+
+`ceph -n osd.123 --show-config` - very misleading, shows default config, not actual parameters
+
+`ceph daemon (or --admin-daemon) /var/run/ceph/ceph-osd.1.asok config show` - shows actual configuration
+
+### admin socket
+
+`ceph daemon {daemon-name} or ceph daemon {path-to-socket-file}`
+
+`ceph daemon osd.0 foo or ceph daemon /var/run/ceph/ceph-osd.0.asok foo`
+
+`ceph daemon {daemon-name} help` - To view the available admin socket commands
+
+`ceph daemon /run/ceph/ceph-mon.....asok mon_status` - mon status using admin socket
+
+`ceph daemon $(ls /var/run/ceph/*asok) help`
+
+`ceph tell osd.\* injectargs '--osd_backfill_full_ratio 0.92` - change parameter dynamically
+
+`ceph tell osd.\* injectargs '--osd_backfill_scan_min 16 --osd_backfill_scan_max 32'` - change multiple parameters
+
+`ceph tell mon.* injectargs '--mon-data-avail-warn 20'` - change monitor paramaters dynamically
 
 ## OSDs
 
@@ -61,6 +83,12 @@ Hints and tips for Ceph
 - noout: if this OSD is down it will not automatically be marked out after the configured interval
   
 `ceph osd rm-<flag> <osd-id>` - unset per-OSD flags
+
+`ceph-disk zap /dev/...` - run on OSD, format disk for OSD use
+
+`ceph osd map <poolname> objectid` - (objectid is for example glance image id ) - shows mapping object to PG
+
+`ceph --admin-daemon /var/run/ceph/ceph-osd.2.asok perf dump` - performance counters
 
 ## Pools
 
@@ -122,7 +150,7 @@ Hints and tips for Ceph
 
 `ceph pg map <pg>` - Ceph will return the placement group map, the placement group, and the OSD status
 
-- returns osdmap eNNN pg {pg-num} -> up [0,1,2] acting [0,1,2]  (NNN is epoch)	If the Up Set and Acting Set do not match, this may be an indicator that the cluster rebalancing itself or of a potential problem with the cluster		
+- returns osdmap eNNN pg {pg-num} -> up [0,1,2] acting [0,1,2]  (NNN is epoch) If the Up Set and Acting Set do not match, this may be an indicator that the cluster rebalancing itself or of a potential problem with the cluster
 
 `ceph pg scrub {pg-id}` - scrub individual PG
 
