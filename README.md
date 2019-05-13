@@ -90,6 +90,10 @@ Hints and tips for Ceph
 
 `ceph --admin-daemon /var/run/ceph/ceph-osd.2.asok perf dump` - performance counters
 
+`ceph osd blocked-by` - shows a list of OSDs which are blocking other OSD, also a number of blocked OSD per each blocker
+
+`ceph daemon osd.x dump_ops_in_flight` - shows active operations on a given OSD. Command executed on the OSD node
+
 ## Pools
 
 `ceph osd pool ls`
